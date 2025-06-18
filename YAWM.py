@@ -17,7 +17,7 @@ class application():
         self.lineAppender = None
         self.linePreAppender = None
         self.wordlistB_Path = None
-    
+        self.version = '1.0'
 
     def linePolicyCheck(self,line):
         if(self.verbose):
@@ -205,7 +205,7 @@ class application():
 parser = argparse.ArgumentParser(prog='YAWM.py',
                                  description='Yet Another Wordlist Manager')
 
-parser.add_argument('Mode', help="Set Modifier Mode:  Shuffle, Merge")
+parser.add_argument('Mode', help="Set Modifier Mode:  Shuffle, Merge, Version")
 parser.add_argument('-f', '--wordlist', help='Set Input WordList')
 parser.add_argument('-o', '--outFile', help="Set Output File")
 parser.add_argument('-v', '--verbose', action='store_true', help='Enable Verbose Output')
@@ -240,5 +240,7 @@ match str(args.Mode).lower():
         newApplication.shuffle()
     case "merge":
         newApplication.merge()
+    case "version":
+        print(f"YAWM.py Version:  {newApplication.version}\nThe2xDropout 2025")
     case _:
         print(f"No Mode Option Matches:  {args.Mode}\nExiting!")
